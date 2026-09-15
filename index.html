@@ -1,179 +1,493 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Distribuidora</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff8e1;
-      color: #222;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Distribuidora</title>
 
-    header {
-      background: linear-gradient(135deg, #ffd000, #ff9800);
-      padding: 25px 20px;
-      text-align: center;
-      color: white;
-    }
+<style>
+*{
+  box-sizing:border-box;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-    }
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#fff8df;
+  color:#222;
+}
 
-    header p {
-      margin: 8px 0 0;
-      font-size: 16px;
-    }
+header{
+  background:linear-gradient(135deg,#ffd900,#ff9d00);
+  color:#222;
+  text-align:center;
+  padding:22px 15px;
+  box-shadow:0 2px 8px #999;
+}
 
-    .productos {
-      padding: 20px;
-      display: grid;
-      gap: 15px;
-    }
+header h1{
+  margin:0;
+  font-size:30px;
+  font-weight:900;
+}
 
-    .producto {
-      background: white;
-      border-radius: 15px;
-      padding: 18px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.12);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+header p{
+  margin:7px 0 0;
+  font-size:16px;
+}
 
-    .producto h3 {
-      margin: 0 0 5px;
-    }
+.banner{
+  margin:15px;
+  padding:16px;
+  border-radius:14px;
+  background:#fff;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  box-shadow:0 2px 8px #ccc;
+}
 
-    .precio {
-      font-weight: bold;
-      font-size: 18px;
-    }
+.container{
+  padding:0 15px 100px;
+}
 
-    button {
-      border: 0;
-      border-radius: 10px;
-      padding: 12px 16px;
-      background: #ff9800;
-      color: white;
-      font-weight: bold;
-    }
+.category{
+  margin-top:22px;
+}
 
-    #carrito {
-      margin: 20px;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.12);
-    }
+.category h2{
+  background:#ffb300;
+  padding:10px 13px;
+  border-radius:10px;
+  margin:0 0 10px;
+  font-size:21px;
+}
 
-    #pedido {
-      width: 100%;
-      margin-top: 15px;
-      background: #25D366;
-      font-size: 17px;
-    }
-  </style>
+.product{
+  background:white;
+  border-radius:14px;
+  margin-bottom:10px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 2px 6px #ddd;
+}
+
+.pic{
+  width:55px;
+  height:55px;
+  border-radius:12px;
+  background:#fff0a8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  flex-shrink:0;
+}
+
+.info{
+  flex:1;
+}
+
+.info strong{
+  display:block;
+  font-size:17px;
+}
+
+.price{
+  margin-top:5px;
+  font-weight:bold;
+  color:#e27600;
+}
+
+.controls{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.controls button{
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  font-size:22px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.minus{
+  background:#eee;
+}
+
+.plus{
+  background:#ffd000;
+}
+
+.qty{
+  min-width:20px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.cartbar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#222;
+  padding:12px;
+  z-index:10;
+}
+
+.cartbar button{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:#ffd000;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.order{
+  display:none;
+  background:white;
+  margin-top:25px;
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 2px 8px #ccc;
+}
+
+.order h2{
+  margin-top:0;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+.whatsapp{
+  width:100%;
+  margin-top:12px;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:#25d366;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Mi Distribuidora</h1>
-  <p>Pedidos rápidos y fáciles</p>
+  <h1>MI DISTRIBUIDORA</h1>
+  <p>Hacé tu pedido fácil y rápido 🛒</p>
 </header>
 
-<section class="productos">
+<div class="banner">
+  🔥 Ofertas y productos
+</div>
 
-  <div class="producto">
-    <div>
-      <h3>Coca-Cola 2 L</h3>
-      <div class="precio">$3.600</div>
+<div class="container">
+    <div class="category">
+    <h2>🥤 Bebidas</h2>
+
+    <div class="product">
+      <div class="pic">🥤</div>
+      <div class="info">
+        <strong>Coca-Cola 2 L</strong>
+        <div class="price">$3.600</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(0,-1)">−</button>
+        <span class="qty" id="qty0">0</span>
+        <button class="plus" onclick="change(0,1)">+</button>
+      </div>
     </div>
-    <button onclick="agregar('Coca-Cola 2 L', 3600)">Agregar</button>
+
+    <div class="product">
+      <div class="pic">🥤</div>
+      <div class="info">
+        <strong>Fresh</strong>
+        <div class="price">$1.500</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(1,-1)">−</button>
+        <span class="qty" id="qty1">0</span>
+        <button class="plus" onclick="change(1,1)">+</button>
+      </div>
+    </div>
   </div>
 
-  <div class="producto">
-    <div>
-      <h3>Quilmes 1 L</h3>
-      <div class="precio">$4.000</div>
+  <div class="category">
+    <h2>🍺 Cervezas</h2>
+
+    <div class="product">
+      <div class="pic">🍺</div>
+      <div class="info">
+        <strong>Quilmes 1 L</strong>
+        <div class="price">$4.000</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(2,-1)">−</button>
+        <span class="qty" id="qty2">0</span>
+        <button class="plus" onclick="change(2,1)">+</button>
+      </div>
     </div>
-    <button onclick="agregar('Quilmes 1 L', 4000)">Agregar</button>
+
+    <div class="product">
+      <div class="pic">🍺</div>
+      <div class="info">
+        <strong>Brahma 1 L</strong>
+        <div class="price">$4.000</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(3,-1)">−</button>
+        <span class="qty" id="qty3">0</span>
+        <button class="plus" onclick="change(3,1)">+</button>
+      </div>
+    </div>
   </div>
 
-  <div class="producto">
-    <div>
-      <h3>Brahma 1 L</h3>
-      <div class="precio">$4.000</div>
+  <div class="category">
+    <h2>🛒 Almacén</h2>
+
+    <div class="product">
+      <div class="pic">🛒</div>
+      <div class="info">
+        <strong>Azúcar</strong>
+        <div class="price">$1.500</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(4,-1)">−</button>
+        <span class="qty" id="qty4">0</span>
+        <button class="plus" onclick="change(4,1)">+</button>
+      </div>
     </div>
-    <button onclick="agregar('Brahma 1 L', 4000)">Agregar</button>
+
+    <div class="product">
+      <div class="pic">🌿</div>
+      <div class="info">
+        <strong>Yerba CBSe</strong>
+        <div class="price">$2.600</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(5,-1)">−</button>
+        <span class="qty" id="qty5">0</span>
+        <button class="plus" onclick="change(5,1)">+</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="pic">🍝</div>
+      <div class="info">
+        <strong>Fideos</strong>
+        <div class="price">$1.100</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(6,-1)">−</button>
+        <span class="qty" id="qty6">0</span>
+        <button class="plus" onclick="change(6,1)">+</button>
+      </div>
+    </div>
   </div>
 
-</section>
+  <div class="category">
+    <h2>🔥 Varios</h2>
 
-<section id="carrito">
-  <h2>🛒 Mi pedido</h2>
-  <div id="lista">Todavía no agregaste productos.</div>
-  <h3 id="total">$0</h3>
-  <button id="pedido" onclick="enviarWhatsApp()">
-    Pedir por WhatsApp
+    <div class="product">
+      <div class="pic">🔥</div>
+      <div class="info">
+        <strong>Carbón</strong>
+        <div class="price">$3.800</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(7,-1)">−</button>
+        <span class="qty" id="qty7">0</span>
+        <button class="plus" onclick="change(7,1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">
+    <h2>🧊 Hielo</h2>
+
+    <div class="product">
+      <div class="pic">🧊</div>
+      <div class="info">
+        <strong>Hielo 1 kg</strong>
+        <div class="price">$1.800</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(8,-1)">−</button>
+        <span class="qty" id="qty8">0</span>
+        <button class="plus" onclick="change(8,1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">
+    <h2>🚬 Cigarrillos</h2>
+
+    <div class="product">
+      <div class="pic">🚬</div>
+      <div class="info">
+        <strong>Liverpool</strong>
+        <div class="price">$2.200</div>
+      </div>
+      <div class="controls">
+        <button class="minus" onclick="change(9,-1)">−</button>
+        <span class="qty" id="qty9">0</span>
+        <button class="plus" onclick="change(9,1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="order" id="order">
+    <h2>🛒 Tu pedido</h2>
+
+    <div id="summary"></div>
+
+    <input id="name" placeholder="Tu nombre">
+    <input id="address" placeholder="Dirección">
+
+    <button class="whatsapp" onclick="sendWhatsApp()">
+      📲 Enviar pedido por WhatsApp
+    </button>
+  </div>
+
+</div>
+
+<div class="cartbar">
+  <button onclick="showOrder()">
+    🛒 Ver pedido — <span id="total">$0</span>
   </button>
-</section>
-
+</div>
 <script>
-  let carrito = [];
+const products = [
+  ["Coca-Cola 2 L",3600],
+  ["Fresh",1500],
+  ["Quilmes 1 L",4000],
+  ["Brahma 1 L",4000],
+  ["Azúcar",1500],
+  ["Yerba CBSe",2600],
+  ["Fideos",1100],
+  ["Carbón",3800],
+  ["Hielo 1 kg",1800],
+  ["Liverpool",2200]
+];
 
-  function agregar(nombre, precio) {
-    carrito.push({nombre, precio});
-    mostrarCarrito();
+const cart = Array(products.length).fill(0);
+
+function change(i,d){
+  cart[i] += d;
+
+  if(cart[i] < 0){
+    cart[i] = 0;
   }
 
-  function mostrarCarrito() {
-    let lista = document.getElementById("lista");
-    let total = 0;
+  document.getElementById("qty"+i).textContent = cart[i];
+  updateTotal();
+}
 
-    if (carrito.length === 0) {
-      lista.innerHTML = "Todavía no agregaste productos.";
-      document.getElementById("total").innerText = "$0";
-      return;
+function updateTotal(){
+  let total = 0;
+
+  products.forEach((p,i)=>{
+    total += p[1] * cart[i];
+  });
+
+  document.getElementById("total").textContent =
+    "$" + total.toLocaleString("es-AR");
+}
+
+function showOrder(){
+  let html = "";
+  let total = 0;
+  let hasProducts = false;
+
+  products.forEach((p,i)=>{
+    if(cart[i] > 0){
+      hasProducts = true;
+      let subtotal = p[1] * cart[i];
+      total += subtotal;
+
+      html += `
+        <p>
+          <strong>${cart[i]} x ${p[0]}</strong>
+          — $${subtotal.toLocaleString("es-AR")}
+        </p>
+      `;
     }
+  });
 
-    lista.innerHTML = carrito.map(p => {
-      total += p.precio;
-      return `<p>${p.nombre} - $${p.precio.toLocaleString("es-AR")}</p>`;
-    }).join("");
-
-    document.getElementById("total").innerText =
-      "Total: $" + total.toLocaleString("es-AR");
+  if(!hasProducts){
+    html = "<p>⚠️ Todavía no agregaste productos.</p>";
+  }else{
+    html += `
+      <hr>
+      <h3>Total: $${total.toLocaleString("es-AR")}</h3>
+    `;
   }
 
-  function enviarWhatsApp() {
-    if (carrito.length === 0) {
-      alert("Agregá algún producto primero.");
-      return;
+  document.getElementById("summary").innerHTML = html;
+  document.getElementById("order").style.display = "block";
+
+  document.getElementById("order").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function sendWhatsApp(){
+  let name = document.getElementById("name").value.trim();
+  let address = document.getElementById("address").value.trim();
+
+  if(!name){
+    alert("Escribí tu nombre.");
+    return;
+  }
+
+  if(!address){
+    alert("Escribí tu dirección.");
+    return;
+  }
+
+  let message = "🛒 *PEDIDO - MI DISTRIBUIDORA*%0A%0A";
+  message += "👤 Nombre: " + name + "%0A";
+  message += "📍 Dirección: " + address + "%0A%0A";
+
+  let total = 0;
+
+  products.forEach((p,i)=>{
+    if(cart[i] > 0){
+      let subtotal = p[1] * cart[i];
+      total += subtotal;
+
+      message +=
+        cart[i] + " x " + p[0] +
+        " = $" + subtotal.toLocaleString("es-AR") +
+        "%0A";
     }
+  });
 
-    let mensaje = "Hola! Quiero hacer este pedido:%0A%0A";
-    let total = 0;
+  message += "%0A💰 *TOTAL: $" +
+    total.toLocaleString("es-AR") + "*";
 
-    carrito.forEach(p => {
-      mensaje += "• " + p.nombre + " - $" +
-        p.precio.toLocaleString("es-AR") + "%0A";
-      total += p.precio;
-    });
-
-    mensaje += "%0ATotal: $" +
-      total.toLocaleString("es-AR");
-
-    window.open(
-      "https://wa.me/543415509319?text=" + mensaje,
-      "_blank"
-    );
-  }
+  window.open(
+    "https://wa.me/543415509319?text=" + message,
+    "_blank"
+  );
+}
 </script>
 
 </body>
